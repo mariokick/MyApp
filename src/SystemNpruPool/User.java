@@ -97,6 +97,52 @@ stmt=connect.createStatement();
 }
     
 
+public boolean  CheckUser(int u_id){
+    Connection connect = null;
+    boolean ch =false  ;
+                Statement stmt = null;
+		
+		try {
+
+Class.forName("com.mysql.jdbc.Driver");
+String urlConnection = "jdbc:mysql://127.0.0.1/npru_pool?useUnicode=true&characterEncoding=UTF-8";
+connect = DriverManager.getConnection ( urlConnection, "root", "" );
+stmt=connect.createStatement();
+		
+             
+			
+			
+			String sql = "SELECT U_ID FROM user WHERE U_ID ='" + u_id + "'  ";
+			
+			ResultSet rec = stmt.executeQuery(sql);
+                        
+			while((rec!=null) && (rec.next()))
+            {
+                        if(rec.getInt("U_ID") == u_id ){
+                            ch = true;
+                        }
+                        else {
+                            ch=false;
+                        }
+            }
+             
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		// Close
+		try {
+			if(connect != null){
+				stmt.close();
+				connect.close();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+                return  ch ;
+}
 
     public void InsertUser(String name, String lastname, String address, String birthday, String cardId, int type, String tel) {
        
