@@ -9,6 +9,6 @@ package SystemNpruPool;
  *
  * @author Godonlyknows
  */
-public interface Payment {
+public class Payment {
     
 }

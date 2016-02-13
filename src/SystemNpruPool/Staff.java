@@ -4,10 +4,11 @@
  * and open the template in the editor.
  */
 package SystemNpruPool;
+
 /**
  *
  * @author Godonlyknows
  */
-public interface Staff {
+public class Staff {
     
 }
